@@ -1,6 +1,6 @@
 {
   "name": "fett",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "boba fett is a Slack bot that helps your team order boba",
   "main": "index.js",
   "scripts": {
