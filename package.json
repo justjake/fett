@@ -1,0 +1,26 @@
+{
+  "name": "fett",
+  "version": "0.1.0",
+  "description": "boba fett is a Slack bot that helps your team order boba",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justjake/fett.git"
+  },
+  "keywords": [
+    "boba",
+    "fett",
+    "slack",
+    "bot",
+    "postmates"
+  ],
+  "author": "Jake Teton-Landis <just.1.jake@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justjake/fett/issues"
+  },
+  "homepage": "https://github.com/justjake/fett#readme"
+}
