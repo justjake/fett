@@ -9,6 +9,11 @@
     "test": "mocha ./src/test/",
     "test:watch": "mocha --watch ./src/test/"
   },
+  "files": [
+    "./index.js",
+    "./lib",
+    "./assets"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/justjake/fett.git"
