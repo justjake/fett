@@ -35,6 +35,7 @@
     "es6-error": "2.1.0",
     "node-persist": "0.0.10",
     "redux": "3.3.1",
+    "redux-actions": "0.9.1",
     "slack-robot": "3.0.4"
   },
   "devDependencies": {
