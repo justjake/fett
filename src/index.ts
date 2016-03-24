@@ -61,7 +61,48 @@ interface Request {
   text: string;
 }
 
-interface Action<ActionT, PayloadT> {
-  type: ActionT;
+interface IAction<TypeT, PayloadT> {
+  type: TypeT;
   payload: PayloadT;
 }
+
+type AnyAction = IAction<any, any>;
+
+interface ActionModule<TypeT, PayloadT> {
+  // action creator
+  (payload PayloadT): IAction<TypeT, PayloadT>;
+  // type assertion. provides type safety inside a reducer
+  is(action: AnyAction): action is IAction<TypeT, PayloadT>;
+  // string constant of the type
+  readonly T: TypeT;
+}
+
+function action<TypeT, PayloadT>(typestring: TypeT): ActionModule<TypeT, PayloadT> {
+  const f = function(payload: PayloadT): IAction<TypeT, PayloadT> {
+    return {
+      type: typestring,
+      payload: payload
+    };
+  }
+
+  f.T = typestring;
+  f.is = function(action: IAction<any,any>): action is IAction<TypeT, PayloadT> {
+    return action.type === typestring;
+  }
+
+  // make a cute type assertion
+  const m = <ActionModule<TypeT, PayloadT>>f;
+  return m;
+}
+
+
+// ok, so an action definition looks like this
+// here, we re-use the User model type, instead of inventing a specific payload type
+type CreateUser = 'create user';
+type Action = IAction<any, any>;
+const createUser = action<CreateUser, User>('create user');
+
+// here's how you dispatch the action:
+// store.dispatch(createUser(user))
+
+function usersById(state: any, action: Action)
