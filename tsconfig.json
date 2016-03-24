@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "noImplicitAny": true,
+    "sourceMap": false,
+    "outDir": "./lib/",
+    "allowJs": true,
+    "pretty": true,
+    "inlineSourceMap": true
+  },
+  "files": [
+    "./src/index.ts"
+  ]
+}
