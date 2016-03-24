@@ -70,28 +70,25 @@ type AnyAction = IAction<any, any>;
 
 interface ActionModule<TypeT, PayloadT> {
   // action creator
-  (payload PayloadT): IAction<TypeT, PayloadT>;
+  (payload: PayloadT): IAction<TypeT, PayloadT>;
   // type assertion. provides type safety inside a reducer
-  is(action: AnyAction): action is IAction<TypeT, PayloadT>;
+  match(action: AnyAction): action is IAction<TypeT, PayloadT>;
   // string constant of the type
-  readonly T: TypeT;
+  T: TypeT;
 }
 
 function action<TypeT, PayloadT>(typestring: TypeT): ActionModule<TypeT, PayloadT> {
-  const f = function(payload: PayloadT): IAction<TypeT, PayloadT> {
+  const m = <ActionModule<TypeT, PayloadT>>function(payload: PayloadT): IAction<TypeT, PayloadT> {
     return {
       type: typestring,
       payload: payload
     };
   }
 
-  f.T = typestring;
-  f.is = function(action: IAction<any,any>): action is IAction<TypeT, PayloadT> {
+  m.T = typestring;
+  m.match = function(action: IAction<any,any>): action is IAction<TypeT, PayloadT> {
     return action.type === typestring;
   }
-
-  // make a cute type assertion
-  const m = <ActionModule<TypeT, PayloadT>>f;
   return m;
 }
 
@@ -105,4 +102,12 @@ const createUser = action<CreateUser, User>('create user');
 // here's how you dispatch the action:
 // store.dispatch(createUser(user))
 
-function usersById(state: any, action: Action)
+// here's how you do a reducer
+// TODO replace state: any with state: Immutable.Bepis
+function usersById(state: any, action: Action): any {
+  if (createUser.match(action)) {
+    // ok, action is now IAction<CreateUser, User> in this scope
+    // ...
+  }
+  return state;
+}
