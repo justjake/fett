@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build-babel": "rm -rf ./lib && babel ./src -d ./lib",
-    "build": "tsc --project ./src",
+    "build": "rm -rf ./lib && tsc",
     "clean": "rm -rf ./lib",
-    "watch": "tsc --project ./src --watch",
+    "watch": "tsc --watch",
     "prepublish": "npm run build",
     "test": "mocha ./src/test/",
     "test:watch": "mocha --watch ./src/test/"
@@ -36,6 +36,7 @@
   "homepage": "https://github.com/justjake/fett#readme",
   "dependencies": {
     "es6-error": "2.1.0",
+    "immutable": "3.7.6",
     "node-persist": "0.0.10",
     "redux": "3.3.1",
     "redux-actions": "0.9.1",
