@@ -8,9 +8,12 @@
     "outDir": "./lib/",
     "allowJs": true,
     "pretty": true,
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "rootDir": "."
   },
   "files": [
-    "./src/index.ts"
+    "./src/index.ts",
+    "./typings/main.d.ts",
+    "./node_modules/immutable/dist/immutable.d.ts"
   ]
 }
