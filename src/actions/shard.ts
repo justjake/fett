@@ -1,5 +1,5 @@
 import { makeAction } from '../Actions';
-import { SlackId } from '../Types';
+import { SlackId, UserIdentifier } from '../Types';
 
 type ShardAction = 'elect leader'
   | 'lock shard' // prevent modifications to this shard
@@ -8,13 +8,10 @@ type ShardAction = 'elect leader'
   | 'deliver shard'; // indicate that this shard is delivered from store
 
 // shards only perform the action if this userId has a request in the shard
-interface ShardPayload {
-  userId: SlackId;
-}
 
 // now we can generate many action creators without too much type bloat
-export const electLeader = makeAction<ShardAction, ShardPayload>('elect leader');
-export const lockShard = makeAction<ShardAction, ShardPayload>('lock shard');
-export const unlockShard = makeAction<ShardAction, ShardPayload>('unlock shard');
-export const orderShard = makeAction<ShardAction, ShardPayload>('order shard');
-export const deliverShard = makeAction<ShardAction, ShardPayload>('deliver shard');
+export const electLeader = makeAction<ShardAction, UserIdentifier>('elect leader');
+export const lockShard = makeAction<ShardAction, UserIdentifier>('lock shard');
+export const unlockShard = makeAction<ShardAction, UserIdentifier>('unlock shard');
+export const orderShard = makeAction<ShardAction, UserIdentifier>('order shard');
+export const deliverShard = makeAction<ShardAction, UserIdentifier>('deliver shard');

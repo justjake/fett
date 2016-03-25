@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20160305082308",
     "redux": "registry:npm/redux#3.0.6+20160214194820"
+  },
+  "ambientDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654"
   }
 }

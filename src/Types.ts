@@ -7,8 +7,14 @@ import { AnyAction } from './Actions';
 
 export type SlackId = string;
 
-export interface User {
+export interface UserIdentifier {
+  userId: string;
+}
+
+export interface User extends UserIdentifier {
   name: string;
+  // will just be the slack id, for now
+  userId: string;
   slackId: SlackId;
   // record when user last spoke
   lastSpokeAt: Maybe<Date>;
@@ -25,7 +31,10 @@ export interface Order {
   // free field. put the name of the place, a menu link, whatever here.
   info: string;
   // there should initially be 1 shard, but it may be ballenced into many shards
+  // TODO: switch to Immutable.js collections
   shards: Shard[];
+  // ugh
+  unshardedRequests: Request[];
 }
 
 export interface Shard {
@@ -38,10 +47,12 @@ export interface Shard {
 }
 
 // something like {userId: 1234, text: "black boba tea with no milk, 20% sweet"}
-interface Request {
-  userId: SlackId;
+export interface Request extends UserIdentifier {
   text: string;
+  createdAt: Date;
 }
 
 // derf?
 export type AnyAction = AnyAction;
+
+export type Maybe<T> = Maybe<T>;
