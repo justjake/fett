@@ -18,9 +18,10 @@ interface ActionModule<TypeT, PayloadT> {
 
 // ActionModule constructor
 export function makeAction<TypeT, PayloadT>
-  (typestring: TypeT): ActionModule<TypeT, PayloadT> {
+  (typestring: TypeT, payloadChecker?: (payload: PayloadT) => void): ActionModule<TypeT, PayloadT> {
     const m = <ActionModule<TypeT, PayloadT>>
       function(payload: PayloadT): Action<TypeT, PayloadT> {
+        if (payloadChecker) payloadChecker(payload)
       return {
         type: typestring,
         payload: payload

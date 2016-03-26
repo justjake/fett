@@ -1,4 +1,4 @@
-import { assert } from 'chai';
+import * as assert from 'assert';
 
 describe('es6 works', () => {
   it('runs without error', () => {

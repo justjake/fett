@@ -89,7 +89,7 @@ export function reducer(state: T, action: AnyAction): T {
     // this is gonna get complicated, fast.
     // first, get a list of all the requests
     const unlockedShards = state.shards.filter(shard => !shard.locked)
-    const requests = state.unshardedRequests.concat(unlockedShards.map(s => s.requests))
+    const requests = state.unshardedRequests.concat(unlockedShards.map(s => s.requests).flatten())
 
     const maxSizeForCurrent = unlockedShards.size != 0 ?
       Math.floor(requests.size / unlockedShards.size) :
