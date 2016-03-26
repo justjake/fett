@@ -5,15 +5,16 @@
     "target": "es5",
     "noImplicitAny": true,
     "sourceMap": false,
-    "outDir": "./lib/",
+    "outDir": "../lib/",
     "allowJs": true,
     "pretty": true,
     "inlineSourceMap": true,
     "rootDir": "."
   },
   "files": [
-    "./src/index.ts",
-    "./typings/main.d.ts",
-    "./node_modules/immutable/dist/immutable.d.ts"
+    "./index.ts",
+    "./test/index.ts",
+    "../typings/main.d.ts",
+    "../node_modules/immutable/dist/immutable.d.ts"
   ]
 }

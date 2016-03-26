@@ -4,6 +4,7 @@
     "redux": "registry:npm/redux#3.0.6+20160214194820"
   },
   "ambientDependencies": {
-    "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654"
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
+    "mocha": "registry:dt/mocha#2.2.5+20160317120654"
   }
 }
