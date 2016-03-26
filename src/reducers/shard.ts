@@ -24,7 +24,7 @@ export function reducer(state: Shard, action: AnyAction): Shard {
     // do we need to make sure the user is in the shard? could a shard leader
     // have no order? that would be horrible. Shard leaders must have an order.
     // Boba is good for you.
-    const hasUser = state.requests.filter(r => r.userId === userId).length > 0;
+    const hasUser = state.requests.filter(r => r.userId === userId).size > 0;
     if (hasUser) return update(state, {leaderId: Some(action.payload.userId)});
   }
 

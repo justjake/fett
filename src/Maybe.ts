@@ -15,3 +15,8 @@ export function Some<T>(it: T): Maybe<T> {
 export function None<T>(it: T): Maybe<T> {
   return undefined;
 }
+
+export function someOr<T>(it: Maybe<T>, otherwise: T): T {
+  if (some(it)) return it;
+  return otherwise;
+}

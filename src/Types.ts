@@ -1,5 +1,6 @@
 import { Maybe } from './Maybe';
 import { AnyAction } from './Actions';
+import { Map, List } from 'immutable';
 
 /**
    this file holds all the unadorned interface types
@@ -32,15 +33,15 @@ export interface Order {
   info: string;
   // there should initially be 1 shard, but it may be ballenced into many shards
   // TODO: switch to Immutable.js collections
-  shards: Shard[];
+  shards: List<Shard>;
   // ugh
-  unshardedRequests: Request[];
+  unshardedRequests: List<Request>;
 }
 
 export interface Shard {
   leaderId: Maybe<SlackId>;
   label: Maybe<string>; // helpful for shard codenames
-  requests: Request[];
+  requests: List<Request>;
   locked: boolean;
   ordered: boolean;
   delivered: boolean;
