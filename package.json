@@ -42,7 +42,8 @@
     "node-persist": "0.0.10",
     "redux": "3.3.1",
     "redux-actions": "0.9.1",
-    "slack-robot": "3.0.4"
+    "slack-robot": "3.0.4",
+    "source-map-support": "0.4.0"
   },
   "devDependencies": {
     "mocha": "2.4.5",
