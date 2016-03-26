@@ -4,6 +4,17 @@
 
 (logo by the very talented [@adamgf](https://twitter.com/adamgf))
 
+## How to develop?
+
+1. git clone it down
+1. `npm install` in the repo. This should install the typings, too.
+1. `npm run watch` in a tmux split. This starts Typescript building from src to
+   lib, and checking your types. It's handy.
+1. `npm run test:watch` in another tmux split. This starts watching lib/test for
+   changes, and running the tests.
+1. make sure you import new test files in src/tests/index.ts. Otherwise, they
+   won't be compiled.
+
 ## Design Doc
 
 This bot will manage its state in Redux, and use simple JSON file on disk for
